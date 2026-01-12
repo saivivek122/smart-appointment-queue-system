@@ -145,25 +145,8 @@ Aspiring Full-Stack Developer 🚀
 
 
 
-Excellent 👍
-You’re doing this **the right way**.
 
----
 
-# 🟢 STEP 3 — DATABASE & DATA FLOW DESIGN (NO CODE)
-
-Still **no coding**.
-Now we think like a **backend engineer**.
-
----
-
-## 🎯 GOAL OF STEP 3
-
-* Decide **what data exists**
-* Decide **how data connects**
-* Avoid database redesign later (very important)
-
----
 
 
 
@@ -242,7 +225,7 @@ Handles order of appointments per service & slot.
 
 
 
-## ✅ TASK 3: STATUS FLOW (VERY IMPORTANT)
+
 
 
 ## 🔵 Appointment Status Flow
@@ -253,25 +236,6 @@ Booked → In Queue → Ongoing → Completed
 ```
 
 
-Perfect 👌
-You’re building this **exactly like a professional backend + frontend engineer**.
-
----
-
-# 🟢 STEP 4 — API PLANNING & ROUTE DESIGN (NO CODE)
-
-Still **NO coding**.
-Now we design **how frontend talks to backend**.
-
----
-
-## 🎯 GOAL OF STEP 4
-
-* Decide **what APIs exist**
-* Decide **who can access what**
-* Avoid messy routes later
-
----
 
 
 
@@ -350,13 +314,6 @@ Now we design **how frontend talks to backend**.
   * Control appointment status
   * View analytics
 
-This shows **security awareness**.
-
----
-
-
-
----
 
 ## 🔵 API Request–Response Flow
 
@@ -367,19 +324,6 @@ This shows **security awareness**.
 * Backend sends response
 * Frontend updates UI
 
-This is **exact backend thinking**.
-
----
-
-Great question 👍
-**Short answer:** *We are very close to coding, but there is **ONE very important step left***.
-
-If we skip it, coding becomes messy.
-If we do it, coding becomes **smooth and fast**.
-
----
-
-# 🟢 STEP 5 — FRONTEND SCREEN → FEATURE MAPPING (LAST NON-CODE STEP)
 
 
 
