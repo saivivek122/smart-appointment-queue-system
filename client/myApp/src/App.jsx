@@ -9,6 +9,7 @@ import Home from '../pages/user/Home'
 import ProtectedRoute from '../routes/ProtectedRoute'
 import Dashboard from '../pages/user/Dashboard'
 import Services from '../pages/user/Services'
+import Slots from '../pages/user/Slots'
 
 function App() {
    return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/services' element={<Services/>}/>
+        <Route path='/timeslot/:id' element={<Slots/>}/>
       </Routes>
     </div>
   )
