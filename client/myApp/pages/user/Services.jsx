@@ -28,7 +28,7 @@ const Services = () => {
   }, []);
   if (loading) return <p>Loading...</p>;
   function handleNavigate(id){
-    navigate(`/timeslot/${id}`)
+    navigate(`/timeSlot/${id}`)
     
   }
   return (

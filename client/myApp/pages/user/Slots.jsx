@@ -1,68 +1,78 @@
-import React, { useEffect, useState } from 'react'
-import getSlots from '../../services/slot'
-import SlotCard from '../../components/common/SlotCard'
-import { useParams } from 'react-router-dom'
-import "./styles.css"
+import React, { useEffect, useState } from "react";
+import getSlots from "../../services/slot";
+import SlotCard from "../../components/common/SlotCard";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import "./styles.css";
+import handleBookingConfirmation from "../../services/bookingconfirmation";
 const Slots = () => {
-  const [slots,setSlots]=useState([])
-  const {id}=useParams()
-  async function getSlotsByService(){
-    try{
-       let data=await getSlots(id)
-       setSlots(data.slots)
+  const [slots, setSlots] = useState([]);
+  const { id } = useParams();
+  const navigate=useNavigate()
+  async function getSlotsByService() {
+    try {
+      let data = await getSlots(id);
+      setSlots(data.slots);
+    } catch (error) {
+      console.log(error);
     }
-    catch(error){
-      console.log(error)
-    }
-    //  console.log(data)
   }
 
-  useEffect(()=>{
-      getSlotsByService()
+  useEffect(() => {
+    getSlotsByService();
+  }, [id]);
 
-  },[id])
-
-  console.log("The slots",slots)
-  let day=new Date()
-  let date=day.getDate()
-  let month=day.getMonth()
-  let year=day.getFullYear()
-
+  let day = new Date();
+  let date = day.getDate();
+  let month = day.getMonth();
+  let year = day.getFullYear();
+  const filteredSlots = slots.filter((item) => {
+    const formattedDate = new Date(item.date).toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+    const slotDate = Number(formattedDate.slice(0, 2));
+    const slotMonth = Number(formattedDate.slice(3, 5));
+    const slotYear = Number(formattedDate.slice(6, 10));
+    return slotDate > date && slotMonth >= month + 1 && slotYear >= year;
+  });
+  function getSlotAndServiceId(serviceId, slotId) {
+    handleBookingConfirmation(serviceId,slotId)
+    console.log(serviceId,slotId)
+    navigate("/appointment")
+  }
   return (
     <div>
-      <p>Hii</p>
-     <div className='time-slot-container'>
-      {slots.length>0  ?slots.map((item)=>{
-      const formattedDate=new Date(item.date).toLocaleDateString("en-IN",{
-        day:"2-digit",
-        month:"2-digit",
-        year:"numeric"
-      })
-      console.log(formattedDate)
-      let SlotDate=formattedDate.slice(0,2)
-      let slotMonth=formattedDate.slice(3,5)
-      let slotYear=formattedDate.slice(6,10)
-      console.log(SlotDate,slotMonth,slotYear)
-      // const formattedStartTime=new Date(item.startTime).toLocaleTimeString("en-IN",{
-      //   hour:"2-digit",
-      //   minute:"2-digit",
-      //   hour12:true
-      // })
-      // const formattedEndTime=new Date(item.endTime).toLocaleTimeString("en-IN",{
-      //   hour:"2-digit",
-      //   minute:"2-digit",
-      //   hour12:true
-      // })
-       return(SlotDate>date && slotMonth>=month && slotYear>=year && <SlotCard serviceName={item.service.name} 
-        date={formattedDate} 
-        isActive={item.service.activeStatus} 
-        startTime={item.startTime} 
-        endTime={item.endTime}/>
-       )
-}):<p>No slots available for this service</p>}
-     </div>
+      <div className="time-slot-container">
+        {filteredSlots.length > 0 ? (
+          filteredSlots.map((item) => {
+            const formattedDate = new Date(item.date).toLocaleDateString(
+              "en-IN",
+              {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+              }
+            );
+            return (
+              <SlotCard
+                serviceName={item.service.name}
+                date={formattedDate}
+                isActive={item.service.activeStatus}
+                startTime={item.startTime}
+                endTime={item.endTime}
+                slotId={item._id}
+                serViceId={item.service._id}
+                onBook={getSlotAndServiceId}
+              />
+            );
+          })
+        ) : (
+          <p>No slots available for this service</p>
+        )}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Slots
+export default Slots;

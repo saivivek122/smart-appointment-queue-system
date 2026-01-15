@@ -6,7 +6,7 @@ const router=express.Router()
 
 router.post("/create",authMiddleware,adminMiddleware,createService)
 router.get("/",authMiddleware,adminMiddleware,allServices)
-router.get("/active",activeServices)
+router.get("/active",authMiddleware,activeServices)
 router.put("/update/:id",authMiddleware,adminMiddleware,updateService)
 router.patch("/toggle/:id",authMiddleware,adminMiddleware,toggleServiceStatus)
 module.exports=router

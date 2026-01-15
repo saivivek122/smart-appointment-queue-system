@@ -105,7 +105,7 @@ const getQueueStatus=async(req,res)=>{
                 message:"Appointment Not Found"
             })
         }
-        if(["completed","canceled"].includes(appointment.status)){
+        if(["completed","cancelled"].includes(appointment.status)){
             return res.status(200).send({
                 status:appointment.status,
                 message:`Appointment is ${appointment.status}`

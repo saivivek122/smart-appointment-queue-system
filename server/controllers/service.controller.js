@@ -45,13 +45,15 @@ const allServices=async(req,res)=>{
 const activeServices=async(req,res)=>{
     try{
         const services=await Service.find({activeStatus:true})
-        res.status(200).send({
+        res.status(200).json({
             message:"Active Services",
             services
         })
     }
     catch(error){
-        res.status(500).send(error.message)
+        res.status(500).json({
+            message :error.message
+        })
     }
 
 }

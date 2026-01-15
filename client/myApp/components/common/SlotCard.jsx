@@ -1,20 +1,20 @@
 import "./SlotCard.css";
-
 const SlotCard = ({
   serviceName,
   date,
   startTime,
   endTime,
   isActive,
+  slotId,
+  serViceId,
   onCardClick,
-  onBook
-}) => {
+  onBook,
+}) => {  
   return (
     <div
       className={`slot-card ${isActive ? "active" : "inactive"}`}
       onClick={isActive ? onCardClick : undefined}
     >
-      {/* Header */}
       <div className="slot-top">
         <h3>{serviceName}</h3>
         <span className={`slot-status ${isActive ? "on" : "off"}`}>
@@ -22,7 +22,6 @@ const SlotCard = ({
         </span>
       </div>
 
-      {/* Info */}
       <div className="slot-info">
         <div>
           <p className="label">Date</p>
@@ -37,15 +36,15 @@ const SlotCard = ({
         </div>
       </div>
 
-      {/* Footer */}
       <div className="slot-footer">
         <button
           className="book-btn"
           disabled={!isActive}
-          onClick={(e) => {
-            e.stopPropagation(); // ✅ prevent card click
-            onBook();
-          }}
+          // onClick={(e) => {
+          //   e.stopPropagation();
+          //   onBook(getSlotAndServiceId(serViceId,slotId));
+          // }}
+          onClick={()=>onBook(serViceId,slotId)}
         >
           Book Slot
         </button>
