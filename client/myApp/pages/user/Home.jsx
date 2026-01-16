@@ -1,15 +1,15 @@
-import React, { useContext } from 'react'
-import AuthContext from '../../context/AuthContext'
-import getActiveServices from '../../services/service'
+// import React, { useContext } from 'react'
+// import AuthContext from '../../context/AuthContext'
+// import getActiveServices from '../../services/service'
 
-const Home = () => {
-  const {logout}=useContext(AuthContext)
-  return (
-    <div>
-      <p>Home</p>
-      <button onClick={()=>logout()}>Logout</button>
-    </div>
-  )
-}
+// const Home = () => {
+//   const {logout}=useContext(AuthContext)
+//   return (
+//     <div>
+//       <p>Home</p>
+//       <button onClick={()=>logout()}>Logout</button>
+//     </div>
+//   )
+// }
 
-export default Home
+// export default Home

@@ -1,4 +1,3 @@
-
 async function handleBookingConfirmation(serviceId,slotId){
     console.log("from",serviceId,slotId)
     const token=localStorage.getItem("token")

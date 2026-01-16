@@ -63,6 +63,7 @@ const Slots = () => {
                 endTime={item.endTime}
                 slotId={item._id}
                 serViceId={item.service._id}
+                isSlotBooked={item.isSlotBooked}
                 onBook={getSlotAndServiceId}
               />
             );

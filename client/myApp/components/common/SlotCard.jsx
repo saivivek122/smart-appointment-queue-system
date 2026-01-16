@@ -7,6 +7,7 @@ const SlotCard = ({
   isActive,
   slotId,
   serViceId,
+  isSlotBooked,
   onCardClick,
   onBook,
 }) => {  
@@ -39,7 +40,8 @@ const SlotCard = ({
       <div className="slot-footer">
         <button
           className="book-btn"
-          disabled={!isActive}
+          // disabled={!isActive}
+          disabled={isSlotBooked}
           // onClick={(e) => {
           //   e.stopPropagation();
           //   onBook(getSlotAndServiceId(serViceId,slotId));
